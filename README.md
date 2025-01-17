@@ -1,2 +1,4 @@
 # Rust Sessions
-Intro to primitives
+Intro to Primitives
+
+[Detailed Introductory Resources](https://hackmd.io/93HrBDYsTyql7IGuxw4nzw?view)
