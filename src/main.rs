@@ -14,6 +14,18 @@ fn intro_to_u(){
     println!("Division: {}", divide);
     println!("Substraction: {}", subtr);    
     println!("Check: {}", check);
+
+    let sum_result: f64 = sumfp(5.0, 10.0);
+    let mult_result: f64 = multiplyfp(5.0, 10.0);
+    let divide: f64 = dividefp(20.0, 10.2);
+    let subtr: f64 = substractfp(20.0, 10.0);
+    println!("Sum: {}", sum_result);
+    println!("Multiplication: {}", mult_result);
+    println!("Division: {}", divide);
+    println!("Substraction: {}", subtr);
+
+    let full_name = string_formatting("Akinshola", "Akinniyi");
+    println!("Full Name: {}", full_name);
 }
 
 fn sum(x: u8, y: u8) -> u8 {
@@ -30,6 +42,22 @@ fn substract(x: isize, y: isize) -> isize {
     x - y
 }
 
+fn sumfp(x: f64, y: f64) -> f64 {
+    x + y
+}
+
+fn multiplyfp(x: f64, y: f64) -> f64 {
+    x * y
+}
+
+fn dividefp(x: f64, y: f64) -> f64 {
+    x / y
+}
+
+fn substractfp(x: f64, y: f64) -> f64 {
+    x - y
+}
+
 fn check_func(num1: u8, num2: u8) -> bool {
     let sum_of_two_nums = sum(num1, num2);
     if sum_of_two_nums % 2 == 0 {
@@ -40,6 +68,13 @@ fn check_func(num1: u8, num2: u8) -> bool {
         return false;
     }
 }
+
+fn string_formatting(first_name: &str, last_name: &str) -> String {
+    let full_name = format!("{} {}", first_name, last_name);
+    return full_name;
+
+}
+
 
 
 // subtract
