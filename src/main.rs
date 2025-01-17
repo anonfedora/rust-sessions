@@ -16,15 +16,15 @@ fn intro_to_u(){
     println!("Check: {}", check);
 
     let sum_result: f64 = sumfp(5.0, 10.0);
-    let mult_result: f64 = multiplyfp(5.0, 10.0);
-    let divide: f64 = dividefp(20.0, 10.2);
-    let subtr: f64 = substractfp(20.0, 10.0);
+    let mult_result: f64 = multiply_fp(5.0, 10.0);
+    let divide: f64 = divide_fp(20.0, 10.2);
+    let subtr: f64 = substract_fp(20.0, 10.0);
     println!("Sum: {}", sum_result);
     println!("Multiplication: {}", mult_result);
     println!("Division: {}", divide);
     println!("Substraction: {}", subtr);
 
-    let full_name = string_formatting("Akinshola", "Akinniyi");
+    let full_name = string_formatting(convert_to_string_v1("Akinshola"), convert_to_string_v2("Akinniyi"));
     println!("Full Name: {}", full_name);
 }
 
@@ -46,15 +46,15 @@ fn sumfp(x: f64, y: f64) -> f64 {
     x + y
 }
 
-fn multiplyfp(x: f64, y: f64) -> f64 {
+fn multiply_fp(x: f64, y: f64) -> f64 {
     x * y
 }
 
-fn dividefp(x: f64, y: f64) -> f64 {
+fn divide_fp(x: f64, y: f64) -> f64 {
     x / y
 }
 
-fn substractfp(x: f64, y: f64) -> f64 {
+fn substract_fp(x: f64, y: f64) -> f64 {
     x - y
 }
 
@@ -69,16 +69,24 @@ fn check_func(num1: u8, num2: u8) -> bool {
     }
 }
 
-fn string_formatting(first_name: &str, last_name: &str) -> String {
+// fn string_formatting(first_name: &str, last_name: &str) -> String {
+//     let full_name = format!("{} {}", first_name, last_name);
+//     return full_name;
+// }
+fn string_formatting(first_name: String, last_name: String) -> String {
     let full_name = format!("{} {}", first_name, last_name);
     return full_name;
-
 }
 
+// util fn version 1 to convert &str to String 
+fn convert_to_string_v1(x: &str) -> String {
+    x.to_string()
+}
 
+// util fn version 2 to convert &str to String 
+fn convert_to_string_v2(x: &str) -> String {
+   String::from(x)
+}
 
-// subtract
-// multiplication
-// division
 
 
