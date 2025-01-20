@@ -1,74 +1,62 @@
-fn main() {
-    println!(
-        "Is Even? {}. The sum of the numbers, {} and {}.",
-        is_even(5, 5),
-        5,
-        5,
-    );
-    println!(
-        "Is Even? {}. The sum of the numbers, {} and {}.",
-        is_even(22, 21),
-        22,
-        21,
-    );
-    intro_to_f();
-    say_name("Eleazar", "Anonefdora");
+// Convert from low integer to high integer (u8 -> u32)
+fn u8_to_u32(value: u8) -> u32 {
+    value as u32
 }
 
-// is sum even?
-fn is_even(x: i32, y: i32) -> bool {
-    let z: i32 = sum_even(x, y);
-    if z % 2 == 0 {
-        true
+// Convert from high bit to low bit with overflow checking
+fn u32_to_u8(value: u32) -> Option<u8> {
+    if value <= u8::MAX as u32 {
+        Some(value as u8)
     } else {
-        false
+        None
     }
 }
 
-fn sum_even(x: i32, y: i32) -> i32 {
-    x + y
+// Convert String to &str (Safe string to str conversion that doesn't leak memory)
+fn string_as_str(s: &String) -> &str {
+    s.as_str()
 }
 
-// floating (arithmetic function)
-fn intro_to_f() {
-    let sum_result: f32 = sum(5.02, 10.02);
-    println!("The sum is {:?}", sum_result);
+// Arithmetic operations on signed integers with overflow checking
+fn checked_arithmetic(a: i32, b: i32) -> Option<(i32, i32, i32, i32)> {
+    // Returns (sum, difference, product, quotient)
+    let sum = a.checked_add(b)?;
+    let difference = a.checked_sub(b)?;
+    let product = a.checked_mul(b)?;
+    let quotient = if b != 0 {
+        a.checked_div(b)?
+    } else {
+        return None;
+    };
 
-    let subtract: f32 = subtract(15.22, 10.02);
-    println!("The subtraction is {:?}", subtract);
-
-    let divide: f32 = divide(15.02, 10.41);
-    println!("The division is {:?}", divide);
-
-    let multiply: f32 = multiply(15.90, 10.02);
-    println!("The multiplication is {:?}", multiply);
-
-    let module: f32 = modulo(15.12, 10.02);
-    println!("The modulo is {:?}", module);
+    Some((sum, difference, product, quotient))
 }
 
-fn sum(x: f32, y: f32) -> f32 {
-    x + y
-}
+// Example usage
+fn main() {
+    // Integer conversion examples
+    let small_num: u8 = 255;
+    let big_num = u8_to_u32(small_num);
+    println!("Converted u8 to u32: {}", big_num);
 
-fn subtract(x: f32, y: f32) -> f32 {
-    x - y
-}
+    let large_num: u32 = 256;
+    match u32_to_u8(large_num) {
+        Some(num) => println!("Converted u32 to u8: {}", num),
+        None => println!("Value {} is too large for u8", large_num),
+    }
 
-fn divide(x: f32, y: f32) -> f32 {
-    x / y
-}
+    // String conversion example
+    let owned_string = String::from("Hello, World!");
+    let str_ref = string_as_str(&owned_string);
+    println!("String as str: {}", str_ref);
 
-fn multiply(x: f32, y: f32) -> f32 {
-    x * y
-}
-
-fn modulo(x: f32, y: f32) -> f32 {
-    x % y
-}
-
-// String concatenation
-fn say_name(first_name: &str, surname: &str) {
-    let full_name = format!("Hello, {} {}", first_name, surname);
-    println!("{}", full_name);
+    // Arithmetic example
+    let a = 100;
+    let b = 20;
+    if let Some((sum, diff, prod, quot)) = checked_arithmetic(a, b) {
+        println!(
+            "Sum: {}, Difference: {}, Product: {}, Quotient: {}",
+            sum, diff, prod, quot
+        );
+    }
 }
