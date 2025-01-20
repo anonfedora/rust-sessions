@@ -6,7 +6,7 @@ fn main() {
     nunber_data_type_converter();
     println!("------------string data type conversion-------------");
     string_data_type_converter();
-    println!("------------unsigned number-------------");
+    println!("------------signed number-------------");
     intro_to_i();
 }
 
