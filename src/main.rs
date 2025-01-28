@@ -1,8 +1,8 @@
 //mod strings;
-mod unsigned;
-mod signed;
 mod float;
+mod signed;
 mod string;
+mod unsigned;
 fn main() {
     unsigned::intro_to_u();
     signed::intro_to_i();
@@ -18,9 +18,6 @@ fn main() {
     // println!("------------signed number-------------");
     // intro_to_i();
 }
-
-
-
 
 // fn check_func(num1: u8, num2: u8) -> bool {
 //     let sum_of_two_nums = sum(num1, num2);

@@ -1,5 +1,5 @@
 // function to encapsulate all floatin point
-pub fn intro_to_float(){
+pub fn intro_to_float() {
     //let check: bool = check_func(5, 10);
 
     let sum_result: f64 = sum_fp(5.0, 10.0);
