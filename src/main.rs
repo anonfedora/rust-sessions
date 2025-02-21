@@ -5,6 +5,16 @@ mod signed;
 mod string;
 mod unsigned;
 mod user_struct;
+mod todo;
+
+fn create_todo(mut todos: Vec<todo::Todo>) -> Vec<todo::Todo>{
+    let tid = todos.len(); 
+    todos.push(todo::Todo::new(tid.clone() as u32, "New Day".to_string(), todo::Status::Pending, "22:02:25".to_string(), "Lorem Ipsom".to_string()));
+
+    print!("todo {:#?}", todos[tid]);
+
+    todos
+}
 
 fn main() {
     unsigned::intro_to_u();
@@ -20,4 +30,13 @@ fn main() {
     println!("Author: {}", book.author);
     println!("Year: {}", book.year);
     println!("Likes: {}", book.likes);
+
+    let mut todo_task: Vec<todo::Todo> = Vec::new();
+
+    todo_task = create_todo(todo_task);
+    todo_task = create_todo(todo_task);
+    todo_task = create_todo(todo_task);
+
+
+
 }
