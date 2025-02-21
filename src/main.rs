@@ -1,4 +1,5 @@
 //mod strings;
+mod constructor;
 mod float;
 mod signed;
 mod string;
@@ -11,4 +12,12 @@ fn main() {
     float::intro_to_float();
     string::strings();
     user_struct::user_registry();
+
+    //Book creation
+    let book = constructor::Book::new("The Rust Programming Language", "Steve Klabnik", 2019);
+
+    println!("Title: {}", book.title);
+    println!("Author: {}", book.author);
+    println!("Year: {}", book.year);
+    println!("Likes: {}", book.likes);
 }
